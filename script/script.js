@@ -80,6 +80,13 @@ Q1Options[3].onclick = () => {
   Q1Value = 4;
 };
 
+var questionBlock = document.querySelector(".questionBlock");
+
+var anim = {
+  animation: "questionsAnim .6s ease-out forwards",
+};
+
 nextBtn.onclick = () => {
-  answer == Q1Value ? console.log("correct") : console.log("incorrect");
+  // answer == Q1Value ? console.log("correct") : console.log("incorrect");
+  Object.assign(questionBlock.style, anim);
 };
