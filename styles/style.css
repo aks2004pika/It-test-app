@@ -190,7 +190,7 @@ body {
 }
 
 .ansBtns button {
-  width: 559px;
+  /* width: 559px; */
   text-align: left;
   padding: 0.5em 1em;
   font-weight: 500;

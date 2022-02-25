@@ -61,32 +61,90 @@ startBtn.onclick = () => {
 // Game mechanics
 const nextBtn = document.getElementById("nextBtn");
 const Q1Options = document.querySelectorAll(".Q1Answers");
-const answer = 3;
-var Q1Value;
+const Q2Options = document.querySelectorAll(".Q2Answers");
+const Q3Options = document.querySelectorAll(".Q3Answers");
+const answers = [3, 1, 2];
+var Q1Value = 0;
+var Q2Value = 0;
+var Q3Value = 0;
 
-Q1Options[0].onclick = () => {
-  Q1Value = 1;
-};
+function Q1ValueHandler() {
+  Q1Options[0].onclick = () => {
+    Q1Value = 1;
+    return Q1Value;
+  };
+  Q1Options[1].onclick = () => {
+    Q1Value = 2;
+    return Q1Value;
+  };
+  Q1Options[2].onclick = () => {
+    Q1Value = 3;
+    return Q1Value;
+  };
+  Q1Options[3].onclick = () => {
+    Q1Value = 4;
+    return Q1Value;
+  };
+  return Q1Value;
+}
 
-Q1Options[1].onclick = () => {
-  Q1Value = 2;
-};
+function Q2ValueHandler() {
+  Q2Options[0].onclick = () => {
+    Q2Value = 1;
+    return Q2Value;
+  };
+  Q2Options[1].onclick = () => {
+    Q2Value = 2;
+    return Q2Value;
+  };
+  Q2Options[2].onclick = () => {
+    Q2Value = 3;
+    return Q2Value;
+  };
+  Q2Options[3].onclick = () => {
+    Q2Value = 4;
+    return Q2Value;
+  };
+  return Q1Value;
+}
 
-Q1Options[2].onclick = () => {
-  Q1Value = 3;
-};
+function Q3ValueHandler() {
+  Q3Options[0].onclick = () => {
+    Q3Value = 1;
+    return Q3Value;
+  };
+  Q3Options[1].onclick = () => {
+    Q3Value = 2;
+    return Q3Value;
+  };
+  Q3Options[2].onclick = () => {
+    Q3Value = 3;
+    return Q3Value;
+  };
+  Q3Options[3].onclick = () => {
+    Q3Value = 4;
+    return Q3Value;
+  };
+  return Q1Value;
+}
 
-Q1Options[3].onclick = () => {
-  Q1Value = 4;
-};
-
-var questionBlock = document.querySelector(".questionBlock");
-
-var anim = {
-  animation: "questionsAnim .6s ease-out forwards",
-};
+Q1ValueHandler();
+Q2ValueHandler();
+Q3ValueHandler();
 
 nextBtn.onclick = () => {
-  // answer == Q1Value ? console.log("correct") : console.log("incorrect");
-  Object.assign(questionBlock.style, anim);
+  var userAnswers = [Q1Value, Q2Value, Q3Value];
+  var score = 0;
+
+  if (answers.length != userAnswers.length) {
+    return false;
+  } else {
+    for (var i = 0; i < answers.length; i++) {
+      answers[i] != userAnswers[i] ? score : score++;
+    }
+    console.log((score / 3) * 100 + "%");
+  }
+  Q1Value = 0;
+  Q2Value = 0;
+  Q3Value = 0;
 };
