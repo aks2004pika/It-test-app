@@ -10,6 +10,12 @@
   --col-an-blue-: rgb(45, 129, 255);
   --col-shadows-: #050a303d;
   --col-white-: whitesmoke;
+  --col-light-border-: rgb(189, 189, 189);
+  --col-dark-border-: gray;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .bg1 {
@@ -121,6 +127,118 @@
   color: var(--col-white-);
 }
 
+/* Game section */
+.gameBg {
+  width: 100%;
+  height: 100%;
+  background: var(--col-blue-);
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transform: translateX(100%);
+}
+
+.gameBlock {
+  background: var(--col-white-);
+  width: fit-content;
+  box-shadow: 0px 20px 30px 0px var(--col-shadows-);
+}
+
+.gameInfo {
+  padding: 0.6em 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 5px 10px -8px var(--col-dark-blue-);
+}
+
+.gameInfo p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--col-dark-blue-);
+}
+
+.infoRight p {
+  width: 205px;
+  padding: 0.5em 0.8em;
+  background: var(--col-blue-);
+  color: var(--col-white-);
+  border-radius: 3px;
+}
+
+.questionBlock {
+  padding: 2em 2em;
+  display: flex;
+}
+
+.questions:not(.Q1) {
+  transform: translateX(600px);
+  position: absolute;
+}
+
+.questions p {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--col-dark-blue-);
+}
+
+.ansBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ansBtns button {
+  text-align: left;
+  padding: 0.5em 1em;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: var(--col-white-);
+  border: 3px solid var(--col-light-border-);
+  border-radius: 3px;
+  color: var(--col-dark-blue-);
+}
+
+.ansBtns button:hover,
+.ansBtns button:focus {
+  background: rgb(233, 233, 233);
+  border: 3px solid var(--col-dark-border-);
+}
+
+.gameBottom {
+  padding: 0.7em 2em;
+  box-shadow: 0 -5px 10px -8px var(--col-dark-blue-);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#previousBtn {
+  font-size: 1.1rem;
+  padding: 0.2em 0.7em;
+  cursor: pointer;
+  border: 3px solid var(--col-an-blue-);
+  background: var(--col-an-blue-);
+  border-radius: 3px;
+  color: var(--col-white-);
+}
+
+#nextBtn {
+  font-size: 1.1rem;
+  padding: 0.2em 0.7em;
+  cursor: pointer;
+  border: 3px solid var(--col-blue-);
+  background: var(--col-blue-);
+  border-radius: 3px;
+  color: var(--col-white-);
+}
+
 /* Animations section */
 @keyframes rulesOpenAnim {
   0% {
@@ -155,5 +273,23 @@
     transform: translateY(30px);
     opacity: 0;
     pointer-events: none;
+  }
+}
+
+@keyframes bg1Anim {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes gameBgAnim {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
