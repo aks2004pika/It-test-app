@@ -63,10 +63,12 @@ const nextBtn = document.getElementById("nextBtn");
 const Q1Options = document.querySelectorAll(".Q1Answers");
 const Q2Options = document.querySelectorAll(".Q2Answers");
 const Q3Options = document.querySelectorAll(".Q3Answers");
-const answers = [3, 1, 2];
+const Q4Options = document.querySelectorAll(".Q4Answers");
+const answers = [3, 1, 2, 1];
 var Q1Value = 0;
 var Q2Value = 0;
 var Q3Value = 0;
+var Q4Value = 0;
 
 function Q1ValueHandler() {
   Q1Options[0].onclick = () => {
@@ -105,7 +107,7 @@ function Q2ValueHandler() {
     Q2Value = 4;
     return Q2Value;
   };
-  return Q1Value;
+  return Q2Value;
 }
 
 function Q3ValueHandler() {
@@ -125,15 +127,36 @@ function Q3ValueHandler() {
     Q3Value = 4;
     return Q3Value;
   };
-  return Q1Value;
+  return Q3Value;
+}
+
+function Q4ValueHandler() {
+  Q4Options[0].onclick = () => {
+    Q4Value = 1;
+    return Q4Value;
+  };
+  Q4Options[1].onclick = () => {
+    Q4Value = 2;
+    return Q4Value;
+  };
+  Q4Options[2].onclick = () => {
+    Q4Value = 3;
+    return Q4Value;
+  };
+  Q4Options[3].onclick = () => {
+    Q4Value = 4;
+    return Q4Value;
+  };
+  return Q4Value;
 }
 
 Q1ValueHandler();
 Q2ValueHandler();
 Q3ValueHandler();
+Q4ValueHandler();
 
 nextBtn.onclick = () => {
-  var userAnswers = [Q1Value, Q2Value, Q3Value];
+  var userAnswers = [Q1Value, Q2Value, Q3Value, Q4Value];
   var score = 0;
 
   if (answers.length != userAnswers.length) {
@@ -142,9 +165,10 @@ nextBtn.onclick = () => {
     for (var i = 0; i < answers.length; i++) {
       answers[i] != userAnswers[i] ? score : score++;
     }
-    console.log((score / 3) * 100 + "%");
+    console.log((score / 4) * 100 + "%");
   }
   Q1Value = 0;
   Q2Value = 0;
   Q3Value = 0;
+  Q4Value = 0;
 };
