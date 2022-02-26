@@ -21,6 +21,30 @@ var gameBgAnim = {
   animation: "gameBgAnim .6s ease-out forwards",
 };
 
+var question1SwapAnim = {
+  animation: "question1Anim .6s ease-out forwards",
+};
+
+var question2SwapAnim = {
+  animation: "question2Anim .6s ease-out forwards",
+};
+
+var question3SwapAnim = {
+  animation: "question3Anim .6s ease-out forwards",
+};
+
+var question1SwapAnimRe = {
+  animation: "question1AnimRe .6s ease-out forwards",
+};
+
+var question2SwapAnimRe = {
+  animation: "question2AnimRe .6s ease-out forwards",
+};
+
+var question3SwapAnimRe = {
+  animation: "question3AnimRe .6s ease-out forwards",
+};
+
 // Actions
 firstBtn.onclick = () => {
   Object.assign(rulesSection.style, rulesAnim);
@@ -58,17 +82,60 @@ startBtn.onclick = () => {
   Object.assign(gameBg.style, gameBgAnim);
 };
 
-// Game mechanics
+// Questions swap mechanics
 const nextBtn = document.getElementById("nextBtn");
+const previousBtn = document.getElementById("previousBtn");
+const questionBlock = document.querySelector(".questionBlock");
+const submitBlock = document.querySelector(".submitBg");
+var nextClickCount = 0;
+var previousClickCount = 0;
+
+nextBtn.onclick = () => {
+  nextClickCount++;
+  previousClickCount--;
+  switch (nextClickCount) {
+    case 1:
+      Object.assign(questionBlock.style, question1SwapAnim);
+      break;
+    case 2:
+      Object.assign(questionBlock.style, question2SwapAnim);
+      break;
+    case 3:
+      Object.assign(questionBlock.style, question3SwapAnim);
+      break;
+    case 4:
+      Object.assign(submitBlock.style, rulesAnim);
+  }
+};
+
+previousBtn.onclick = () => {
+  previousClickCount++;
+  nextClickCount--;
+  switch (previousClickCount) {
+    case 0:
+      Object.assign(questionBlock.style, question1SwapAnimRe);
+      break;
+    case -1:
+      Object.assign(questionBlock.style, question2SwapAnimRe);
+      break;
+    case -2:
+      Object.assign(questionBlock.style, question3SwapAnimRe);
+      break;
+  }
+};
+
+// Game Scoring
 const Q1Options = document.querySelectorAll(".Q1Answers");
 const Q2Options = document.querySelectorAll(".Q2Answers");
 const Q3Options = document.querySelectorAll(".Q3Answers");
 const Q4Options = document.querySelectorAll(".Q4Answers");
+const submitBtn = document.querySelector(".submitBtn");
 const answers = [3, 1, 2, 1];
 var Q1Value = 0;
 var Q2Value = 0;
 var Q3Value = 0;
 var Q4Value = 0;
+var score = 0;
 
 function Q1ValueHandler() {
   Q1Options[0].onclick = () => {
@@ -155,9 +222,16 @@ Q2ValueHandler();
 Q3ValueHandler();
 Q4ValueHandler();
 
-nextBtn.onclick = () => {
+submitBtn.onclick = () => {
+  calculateScore();
+  Q1Value = 0;
+  Q2Value = 0;
+  Q3Value = 0;
+  Q4Value = 0;
+};
+
+function calculateScore() {
   var userAnswers = [Q1Value, Q2Value, Q3Value, Q4Value];
-  var score = 0;
 
   if (answers.length != userAnswers.length) {
     return false;
@@ -165,10 +239,7 @@ nextBtn.onclick = () => {
     for (var i = 0; i < answers.length; i++) {
       answers[i] != userAnswers[i] ? score : score++;
     }
-    console.log((score / 4) * 100 + "%");
+
+    console.log(`${score}/4`);
   }
-  Q1Value = 0;
-  Q2Value = 0;
-  Q3Value = 0;
-  Q4Value = 0;
-};
+}

@@ -190,7 +190,7 @@ body {
 }
 
 .ansBtns button {
-  /* width: 559px; */
+  width: 559px;
   text-align: left;
   padding: 0.5em 1em;
   font-weight: 500;
@@ -230,6 +230,64 @@ body {
 #nextBtn {
   font-size: 1.1rem;
   padding: 0.2em 0.7em;
+  cursor: pointer;
+  border: 3px solid var(--col-blue-);
+  background: var(--col-blue-);
+  border-radius: 3px;
+  color: var(--col-white-);
+}
+
+/* Submit Block */
+.submitBg {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(30px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.submitBlock {
+  background: var(--col-white-);
+  padding: 0.8em 1.3em;
+  border-radius: 3px;
+  box-shadow: 0 10px 20px -5px var(--col-shadows-);
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 30px;
+}
+
+.submitBlock p {
+  font-weight: 500;
+  color: var(--col-dark-blue-);
+  font-size: 1.1rem;
+}
+
+.submitBlockBtns {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 20px;
+}
+
+.submitCancelBtn {
+  font-size: 0.95rem;
+  padding: 0.4em 1em;
+  cursor: pointer;
+  border: 3px solid var(--col-an-blue-);
+  background: var(--col-an-blue-);
+  border-radius: 3px;
+  color: var(--col-white-);
+}
+
+.submitBtn {
+  font-size: 0.95rem;
+  padding: 0.4em 1em;
   cursor: pointer;
   border: 3px solid var(--col-blue-);
   background: var(--col-blue-);
@@ -292,11 +350,56 @@ body {
   }
 }
 
-@keyframes questionsAnim {
+@keyframes question1Anim {
   0% {
     transform: translateX(0);
   }
   100% {
     transform: translateX(-609px);
+  }
+}
+
+@keyframes question2Anim {
+  0% {
+    transform: translateX(-609px);
+  }
+  100% {
+    transform: translateX(-1218px);
+  }
+}
+
+@keyframes question3Anim {
+  0% {
+    transform: translateX(-1218px);
+  }
+  100% {
+    transform: translateX(-1827px);
+  }
+}
+
+@keyframes question1AnimRe {
+  0% {
+    transform: translateX(-609px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes question2AnimRe {
+  0% {
+    transform: translateX(-1218px);
+  }
+  100% {
+    transform: translateX(-609px);
+  }
+}
+
+@keyframes question3AnimRe {
+  0% {
+    transform: translateX(-1827px);
+  }
+  100% {
+    transform: translateX(-1218px);
   }
 }
